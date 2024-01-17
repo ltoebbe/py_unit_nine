@@ -1,4 +1,5 @@
 from card import Card
+import random
 
 
 class Deck:
@@ -13,9 +14,14 @@ class Deck:
         return self.card
 
     def print_deck(self):
-        # for x in range(len(self.deck_of_cards)):
-        for x in range(len(self.deck_of_cards)):
-            print(Deck.get_card(self))
+        for card in self.deck_of_cards:
+            print(card.get_name())
+
+    def shuffle_deck(self):
+        n = len(self.deck_of_cards)
+        for i in range(n - 1, 0, -1):
+            j = random.randint(0, i)
+            self.deck_of_cards[i], self.deck_of_cards[j] = self.deck_of_cards[j], self.deck_of_cards[i]
 
 
 deck = Deck(Card)
@@ -132,4 +138,6 @@ deck.add_card(JackOfClubs)
 deck.add_card(QueenOfClubs)
 deck.add_card(KingOfClubs)
 
-print(Deck.deck_of_cards.get_card)
+# deck.print_deck()
+# deck.shuffle_deck()
+# deck.print_deck()
